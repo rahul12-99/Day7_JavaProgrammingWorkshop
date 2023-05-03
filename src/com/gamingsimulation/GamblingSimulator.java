@@ -2,37 +2,43 @@ package com.gamingsimulation;
 
 public class GamblingSimulator {
     /*
-     * Method for gambler either win or loose the game
+     * Method for gambler 50% of stack resign for the day
      * @param args
      */
 
     public static void main(String[] args) {
         /*
-         * 1) Initialize the variable
-         * 2) Taking random variable for check either win or loose the game
-         * 3) Putting the condition if won or else loose and printing
+         * 1) initialize the variable
+         * 2) initialize the loop till 50% of stack
+         * 3) condition for the win and loose and printing the amount
          */
 
         /*
-         1) Initialize the variable
+         1) initialize the variable
          */
-        int stake_per_day = 100;
+        int stake_per_game = 100/2;
         int bet_per_game = 1;
+        int winLoose = 0;
 
         /*
-         2) Taking random variable for check either win or loose the game
+         2) initialize the loop till 50% of stack
          */
-        int winLoose = (int) Math.floor(Math.random() * 2);
+        for (int winAmount = 0; winAmount <= stake_per_game; winAmount++) {
+            winLoose = (int) (Math.floor(Math.random() * 2));
 
-        /*
-         3) Putting the condition if won or else loose and printing
-         */
-        if (winLoose == 1) {
-            System.out.println("You won the game");
-            System.out.println("Your stack is " + (stake_per_day + bet_per_game));
-        } else {
-            System.out.println("You loose the game");
-            System.out.println("Your stack is " + (stake_per_day - bet_per_game));
+            /*
+              3) condition for the win and loose and printing the amount
+             */
+            if (winLoose == 1) {
+                System.out.println(winLoose + " You win the bet");
+                winLoose = winLoose + bet_per_game;
+
+            } else {
+                System.out.println(winLoose + " You loose the bet");
+                winLoose = winLoose - bet_per_game;
+
+            }
         }
+        System.out.println("After resign 50% of total stack amount is : " + winLoose);
     }
 }
