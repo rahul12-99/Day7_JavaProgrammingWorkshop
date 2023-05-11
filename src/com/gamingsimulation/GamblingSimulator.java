@@ -9,25 +9,24 @@ public class GamblingSimulator {
 
     /**
      * This method return random number for win or loose
-     * @return
      */
     public double winLoose() {
         return Math.random();
     }
 
     /*
-     * This is the main method of the program to know total amount after playing 20 days
+     * This is the main method of the program to know total amount after playing a month
      * @param args
      */
     public static void main(String[] args) {
-        /**
+        /*
          * 1) Initialized the variable
-         * 2) Putting condition of loose or won in while loop for 20 days
+         * 2) Putting condition of loose or won in while loop for A month
          * 3) printing the total amount
          */
         GamblingSimulator gamble = new GamblingSimulator();
         double winLoose;
-        int totalDays = 20;
+        int totalDays = 30;
         int endValue=0;
         int amount = STAKE_PER_DAY;
         while (totalDays>endValue) {
@@ -41,6 +40,6 @@ public class GamblingSimulator {
 
             }
             totalDays--;
-        }System.out.println("Amount = " + amount);
+        }System.out.println("Total amount in month = " + amount);
     }
 }
