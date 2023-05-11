@@ -2,43 +2,45 @@ package com.gamingsimulation;
 
 public class GamblingSimulator {
     /*
-     * Method for gambler 50% of stack resign for the day
+     * Initialized stake per day and bet per game which is static and final variable
+     */
+    public static final int STAKE_PER_DAY = 100;
+    public static final int BET_PER_GAME = 1;
+
+    /**
+     * This method return random number for win or loose
+     * @return
+     */
+    public double winLoose() {
+        return Math.random();
+    }
+
+    /*
+     * This is the main method of the program to know total amount after playing 20 days
      * @param args
      */
-
     public static void main(String[] args) {
-        /*
-         * 1) initialize the variable
-         * 2) initialize the loop till 50% of stack
-         * 3) condition for the win and loose and printing the amount
+        /**
+         * 1) Initialized the variable
+         * 2) Putting condition of loose or won in while loop for 20 days
+         * 3) printing the total amount
          */
-
-        /*
-         1) initialize the variable
-         */
-        int stake_per_game = 100/2;
-        int bet_per_game = 1;
-        int winLoose = 0;
-
-        /*
-         2) initialize the loop till 50% of stack
-         */
-        for (int winAmount = 0; winAmount <= stake_per_game; winAmount++) {
-            winLoose = (int) (Math.floor(Math.random() * 2));
-
-            /*
-              3) condition for the win and loose and printing the amount
-             */
-            if (winLoose == 1) {
-                System.out.println(winLoose + " You win the bet");
-                winLoose = winLoose + bet_per_game;
+        GamblingSimulator gamble = new GamblingSimulator();
+        double winLoose;
+        int totalDays = 20;
+        int endValue=0;
+        int amount = STAKE_PER_DAY;
+        while (totalDays>endValue) {
+            winLoose = gamble.winLoose();
+            System.out.println("win or loose : " + winLoose);
+            if (winLoose < 0.5) {
+                amount = amount + BET_PER_GAME;
 
             } else {
-                System.out.println(winLoose + " You loose the bet");
-                winLoose = winLoose - bet_per_game;
+                amount = amount - BET_PER_GAME;
 
             }
-        }
-        System.out.println("After resign 50% of total stack amount is : " + winLoose);
+            totalDays--;
+        }System.out.println("Amount = " + amount);
     }
 }
