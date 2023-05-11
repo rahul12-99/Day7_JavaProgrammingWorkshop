@@ -27,19 +27,18 @@ public class GamblingSimulator {
         GamblingSimulator gamble = new GamblingSimulator();
         double winLoose;
         int totalDays = 30;
-        int endValue=0;
+        int endValue = 0;
         int amount = STAKE_PER_DAY;
-        while (totalDays>endValue) {
+        while (totalDays > endValue) {
             winLoose = gamble.winLoose();
             System.out.println("win or loose : " + winLoose);
             if (winLoose < 0.5) {
                 amount = amount + BET_PER_GAME;
-
             } else {
                 amount = amount - BET_PER_GAME;
-
             }
             totalDays--;
-        }System.out.println("Total amount in month = " + amount);
+        }
+        System.out.println("Total amount in month = " + amount);
     }
 }
